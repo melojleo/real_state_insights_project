@@ -1,6 +1,6 @@
 # House Rocket - Portifolio price analysis and recommendations
 
-![icon]("https://github.com/melojleo/real_state_insights_project/blob/main/images/house_rocket.png")
+![icon](https://github.com/melojleo/real_state_insights_project/blob/main/images/house_rocket.png)
 
 House Rocket is a fictional company that aims to analyze property data (real estate) and carry out purchase and sale operations, maximizing profit and taking into account mainly:
 - The condition of the property and
