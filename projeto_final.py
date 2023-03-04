@@ -21,14 +21,14 @@ st.set_page_config( layout='wide' )
 # ------------------------------------------
 # Helper Functions
 # ------------------------------------------
-@st.cache( allow_output_mutation=True )
+@st.cache_data( )
 def get_data( path ):
     data = pd.read_csv( path )
 
     return data
 
 
-@st.cache( allow_output_mutation=True )
+@st.cache_data( )
 def get_geofile( url ):
     geofile = geopandas.read_file( url )
 
@@ -61,7 +61,7 @@ def data_overview( data ):
 
     st.write( data.head() )
 
-    c1, c2 = st.beta_columns((1, 1) )  
+    c1, c2 = st.columns((1, 1) )  
 
     # Average metrics
     df1 = data[['id', 'zipcode']].groupby( 'zipcode' ).count().reset_index()
@@ -101,7 +101,7 @@ def data_overview( data ):
 def region_overview( data, geofile ):
     st.title( 'Region Overview' )
 
-    c1, c2 = st.beta_columns( ( 1, 1 ) )
+    c1, c2 = st.columns( ( 1, 1 ) )
     c1.header( 'Portfolio Density' )
 
     df = data.sample( 10 )
@@ -225,7 +225,7 @@ def set_phisical( data ):
     f_bathrooms = st.sidebar.selectbox( 'Max number of bath', 
                                         sorted( set( data['bathrooms'].unique() ) ) )
 
-    c1, c2 = st.beta_columns( 2 )
+    c1, c2 = st.columns( 2 )
 
     # Houses per bedrooms
     c1.header( 'Houses per bedrooms' )
@@ -243,7 +243,7 @@ def set_phisical( data ):
     f_floors = st.sidebar.selectbox('Max number of floors', sorted( set( data['floors'].unique() ) ) )
     f_waterview = st.sidebar.checkbox('Only House with Water View' )
 
-    c1, c2 = st.beta_columns( 2 )
+    c1, c2 = st.columns( 2 )
 
     # Houses per floors
     c1.header( 'Houses per floors' )
@@ -266,7 +266,7 @@ def set_phisical( data ):
 
 if __name__ == "__main__":
     # ETL
-    path = r'C:\Users\Lenovo\Documents\Repos\python_zero_ao_ds\datasets\kc_house_data.csv'
+    path = r'C:\Users\leonardo.melo\real_state_insights_project\kc_house_data.csv'
     url='https://opendata.arcgis.com/datasets/83fc2e72903343aabff6de8cb445b81c_2.geojson'
 
     # load data
